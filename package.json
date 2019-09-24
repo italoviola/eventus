@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "stylus src/stylus --out static/css",
+    "build": "stylus src/stylus --out static/css"
   },
   "author": "",
   "license": "ISC",
