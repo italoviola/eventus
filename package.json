@@ -4,16 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "stylus src/stylus --out static/css"
+    "start": "npm run css-watch && node index.js",
+    "build": "stylus src/stylus --out static/css",
+    "css-watch": "stylus -w src/stylus/ -o static/css/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "nunjucks": "^3.2.0",
     "stylus": "^0.54.7"
   }
 }
-
-"css": "mkdirp build/css && stylus src/styl/main.styl -o build/css/main.css",
-    "css-watch": "npm run css -- -w",
