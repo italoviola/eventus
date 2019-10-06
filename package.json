@@ -6,13 +6,13 @@
   "scripts": {
     "start": "concurrently \"npm run css-watch\" \"node index.js\"",
     "build": "stylus src/stylus --out static/css",
-    "css-watch": "stylus -w src/stylus/ -o static/css/"
+    "css-watch": "stylus -w src/stylus/main.styl -o static/css/main.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nunjucks": "^3.2.0",
+    "mustache": "^3.1.0",
     "stylus": "^0.54.7"
   },
   "devDependencies": {
