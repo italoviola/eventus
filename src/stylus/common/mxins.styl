@@ -1,3 +1,25 @@
-.teste
-    width auto
-    height auto
+// media queries
+tablet()
+    @media screen and (min-width: $breakpoints.minTablet)
+        {block}
+
+desktop()
+    @media screen and (min-width: $breakpoints.minDesktop)
+        {block}
+
+wide()
+    @media screen and (min-width: $breakpoints.minWide)
+        {block}
+
+maxWide()
+    @media screen and (min-width: $breakpoints.maxWide)
+        {block}
+
+// functions
+button($bg-color, $color)
+    background-color $bg-color
+    border-radius 100px
+    color $color
+    display block
+    padding 12px 18px
+    text-decoration none
