@@ -1,3 +1,7 @@
+.teste {
+  width: auto;
+  height: auto;
+}
 .footer {
   height: 100px;
   width: 100%;
@@ -9,17 +13,37 @@
   background-color: #800080;
 }
 .institucional-header {
-  height: 100px;
+  height: 110px;
   width: 100%;
   background-color: #800080;
   display: flex;
   flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
 }
 .institucional-header .logo {
   width: auto;
 }
 .institucional-header .links {
-  width: auto;
+  display: flex;
+  flex-flow: row;
+}
+.institucional-header .links .login {
+  display: block;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 18px;
+  margin-right: 10px;
+}
+.institucional-header .links .cadastro {
+  display: block;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 18px;
 }
 .institucional {
   width: 100%;
@@ -28,10 +52,6 @@
   height: 100px;
   width: 100%;
   background-color: #ccc;
-}
-.teste {
-  width: auto;
-  height: auto;
 }
 body {
   width: auto;

@@ -1,15 +1,35 @@
 .institucional-header
-    height 100px
+    height 110px
     width 100%
-    background-color purple
+    background-color $primary-color
     display flex
     flex-flow row
+    align-items center
+    justify-content space-between
+    padding 15px
+    box-sizing border-box
 
     .logo
         width auto
 
     .links
-        width auto
+        display flex
+        flex-flow row
+
+        .login
+            display block
+            text-decoration none
+            background-color transparent
+            padding 10px
+            font-size 18px
+            margin-right 10px
+        
+        .cadastro
+            display block
+            text-decoration none
+            background-color $white
+            padding 10px
+            font-size 18px
 
 .institucional
     width 100%
