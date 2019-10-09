@@ -9,18 +9,41 @@
   background-color: #800080;
 }
 .institucional-header {
-  height: 110px;
+  height: auto;
   width: 100%;
   background-color: #800080;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   align-items: center;
   justify-content: space-between;
   padding: 15px;
   box-sizing: border-box;
 }
+@media screen and (min-width: 679px) {
+  .institucional-header {
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+}
 .institucional-header .logo {
   width: auto;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 679px) {
+  .institucional-header .logo {
+    margin: 0;
+  }
+}
+.institucional-header .logo img {
+  height: 60px;
+}
+@media screen and (min-width: 679px) {
+  .institucional-header .logo img {
+    height: 70px;
+  }
 }
 .institucional-header .links {
   display: flex;
