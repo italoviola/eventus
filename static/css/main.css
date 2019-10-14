@@ -6,7 +6,7 @@
 .header {
   height: auto;
   width: 100%;
-  background-color: #800080;
+  background-color: #96448e;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -43,7 +43,7 @@
 .institucional-header {
   height: auto;
   width: 100%;
-  background-color: #800080;
+  background-color: #96448e;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -94,7 +94,7 @@
 .institucional-header .links .cadastro {
   background-color: #fff;
   border-radius: 25px;
-  color: #800080;
+  color: #96448e;
   display: block;
   padding: 12px 18px;
   text-decoration: none;
@@ -111,7 +111,8 @@
 .page-login {
   width: 100%;
   height: calc(100vh - 150px);
-  background-image: url("../../assets/6ultzajz3ai31.png");
+  background-image: url("../../assets/Background_eventus.png");
+  background-position: center;
   padding: 30px 0;
   box-sizing: border-box;
   position: relative;
@@ -160,7 +161,7 @@
   border-radius: 25px;
 }
 .page-login .form-wrapper form input[type="submit"] {
-  background-color: #800080;
+  background-color: #96448e;
   border-radius: 25px;
   color: #fff;
   display: block;
@@ -168,6 +169,7 @@
   text-decoration: none;
   padding: 15px;
   font-size: 18px;
+  margin: 30px 0 0;
 }
 body {
   font-family: "Helvetica", sans-serif;
