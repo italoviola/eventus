@@ -4,9 +4,41 @@
   background-color: #ccc;
 }
 .header {
-  height: 100px;
+  height: auto;
   width: 100%;
   background-color: #800080;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 679px) {
+  .header {
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+}
+.header .logo {
+  width: auto;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 679px) {
+  .header .logo {
+    margin: 0;
+  }
+}
+.header .logo img {
+  height: 60px;
+}
+@media screen and (min-width: 679px) {
+  .header .logo img {
+    height: 70px;
+  }
 }
 .institucional-header {
   height: auto;
@@ -51,7 +83,7 @@
 }
 .institucional-header .links .login {
   background-color: tranparent;
-  border-radius: 100px;
+  border-radius: 25px;
   color: #fff;
   display: block;
   padding: 12px 18px;
@@ -61,7 +93,7 @@
 }
 .institucional-header .links .cadastro {
   background-color: #fff;
-  border-radius: 100px;
+  border-radius: 25px;
   color: #800080;
   display: block;
   padding: 12px 18px;
@@ -75,6 +107,67 @@
   height: 100px;
   width: 100%;
   background-color: #ccc;
+}
+.page-login {
+  width: 100%;
+  height: calc(100vh - 150px);
+  background-image: url("../../assets/6ultzajz3ai31.png");
+  padding: 30px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+@media screen and (min-width: 679px) {
+  .page-login {
+    height: calc(100vh - 100px);
+  }
+}
+.page-login .form-wrapper {
+  width: 80%;
+  max-width: 450px;
+  height: auto;
+  background-color: #fff;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 679px) {
+  .page-login .form-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.page-login .form-wrapper h1 {
+  text-align: center;
+  margin: 0 0 15px;
+  font-size: 32px;
+}
+.page-login .form-wrapper form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.page-login .form-wrapper form input {
+  display: block;
+  margin-bottom: 15px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 15px;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 25px;
+}
+.page-login .form-wrapper form input[type="submit"] {
+  background-color: #800080;
+  border-radius: 25px;
+  color: #fff;
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  padding: 15px;
+  font-size: 18px;
 }
 body {
   font-family: "Helvetica", sans-serif;

@@ -1,0 +1,52 @@
+.page-login
+    width 100%
+    height calc(100vh - 150px) //altura da visualização da tela - altura do header
+    background-image url("../../assets/6ultzajz3ai31.png")
+    padding 30px 0
+    box-sizing border-box
+    position relative
+
+    +tablet()
+        height calc(100vh - 100px)
+
+    .form-wrapper
+        width 80%
+        max-width 450px
+        height auto
+        background-color $white
+        margin 0 auto
+        border-radius $radius
+        padding 30px
+        box-sizing border-box
+        
+        +tablet()
+            position absolute
+            top 50%
+            left 50%
+            transform translate(-50%, -50%)
+
+        h1
+            text-align center
+            margin 0 0 15px
+            font-size 32px
+
+        form
+            label
+                display block
+                margin-bottom 5px
+                font-size 18px
+
+            input
+                display block
+                margin-bottom 15px
+                background-color $light-gray
+                border 1px solid #CCC
+                padding 15px
+                font-size 18px
+                width 100%
+                border-radius $radius
+
+            input[type="submit"]
+                button($primary-color, $white)
+                padding 15px
+                font-size 18px
