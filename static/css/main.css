@@ -96,7 +96,7 @@
   background-color: #96448e;
   border-radius: 25px;
   color: #fff;
-  display: block;
+  display: inline-block;
   padding: 12px 18px;
   text-decoration: none;
   padding: 15px;
@@ -148,7 +148,7 @@
   background-color: tranparent;
   border-radius: 25px;
   color: #fff;
-  display: block;
+  display: inline-block;
   padding: 12px 18px;
   text-decoration: none;
   font-size: 18px;
@@ -158,13 +158,66 @@
   background-color: #fff;
   border-radius: 25px;
   color: #96448e;
-  display: block;
+  display: inline-block;
   padding: 12px 18px;
   text-decoration: none;
   font-size: 18px;
 }
 .institucional {
   width: 100%;
+  height: calc(100vh - 150px);
+  background-image: url("../../assets/Background_eventus.png");
+  background-position: center;
+  padding: 30px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+@media screen and (min-width: 679px) {
+  .institucional {
+    height: calc(100vh - 100px);
+  }
+}
+.institucional .institucional-content {
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.institucional .institucional-content h1 {
+  font-size: 44px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+.institucional .institucional-content p {
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+  line-height: 1.6;
+}
+.institucional .institucional-content .institucional-link {
+  background-color: #f39c12;
+  border-radius: 25px;
+  color: #fff;
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+  width: 100%;
+  font-size: 24px;
+  margin: 30px auto 0;
+  text-decoration: none;
+  text-align: center;
+}
+@media screen and (min-width: 679px) {
+  .institucional .institucional-content .institucional-link {
+    width: 250px;
+  }
 }
 .institucional-footer {
   height: 100px;
@@ -227,7 +280,7 @@
   background-color: #96448e;
   border-radius: 25px;
   color: #fff;
-  display: block;
+  display: inline-block;
   padding: 12px 18px;
   text-decoration: none;
   padding: 15px;

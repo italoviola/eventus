@@ -20,6 +20,17 @@ button($bg-color, $color)
     background-color $bg-color
     border-radius $radius
     color $color
-    display block
+    display inline-block
     padding 12px 18px
     text-decoration none
+
+centralize()
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+
+font($size, $weight, $align)
+    font-size $size
+    font-weight $weight
+    text-align $align

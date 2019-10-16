@@ -44,6 +44,43 @@
 
 .institucional
     width 100%
+    height calc(100vh - 150px) //altura da visualização da tela - altura do header
+    background-image url("../../assets/Background_eventus.png")
+    background-position center
+    padding 30px 0
+    box-sizing border-box
+    position relative  
+
+    +tablet()
+        height calc(100vh - 100px)
+
+    .institucional-content
+        width 80%
+        display flex
+        flex-flow column
+        justify-content center
+        centralize()
+
+        h1
+            font(44px, bold, center)
+            color $white
+            margin 0
+
+        p
+            font(24px, normal, center)
+            color $white
+            line-height 1.6
+
+        .institucional-link
+            button($secondary-color, $white)
+            width 100%
+            font-size 24px
+            margin 30px auto 0
+            text-decoration none
+            text-align center
+
+            +tablet()
+                width 250px
 
 .institucional-footer
     height 100px
