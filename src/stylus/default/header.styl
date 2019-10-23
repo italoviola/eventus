@@ -3,22 +3,16 @@
     width 100%
     background-color $primary-color
     display flex
-    flex-flow column
+    flex-flow row
     align-items center
     justify-content space-between
     padding 15px
     box-sizing border-box
-
-    +tablet()
-        flex-flow row
-        align-items center
-        justify-content space-between
-        padding 15px
-        box-sizing border-box
+    margin-bottom 30px
 
     .logo
         width auto
-        margin-bottom 15px
+        margin-bottom 0
 
         +tablet()
             margin 0
@@ -28,3 +22,12 @@
 
             +tablet()
                 height 70px 
+    
+    .menu
+        width auto
+
+        &-item
+            font(32px, normal, center)
+            color $secondary-color
+            margin-right 20px
+            text-decoration none
