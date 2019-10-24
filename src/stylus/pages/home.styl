@@ -1,7 +1,9 @@
 .home
-    width auto
+    width 90%
+    margin 0 auto
 
     &-hello
+        margin-bottom 30px
 
         h1
             font(32px, bold, center)
@@ -12,3 +14,13 @@
             font(18px, normal, center)
             color $black
             line-height 1.6
+
+    &-events
+        margin-bottom 30px
+        display flex
+        flex-flow column
+
+        .event-card
+
+            img
+                max-width 100%
