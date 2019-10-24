@@ -30,11 +30,18 @@
   content: "\e986";
 }
 .event-card {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   background-color: #f6f6f6;
   border-radius: 25px;
   border: 1px solid #ccc;
   overflow: hidden;
+  margin: 0 auto 30px;
+}
+@media screen and (min-width: 679px) {
+  .event-card {
+    margin: 0 15px 30px;
+  }
 }
 .event-card-img {
   width: auto;
@@ -219,9 +226,15 @@
   line-height: 1.6;
 }
 .home-events {
-  margin-bottom: 30px;
   display: flex;
   flex-flow: column;
+}
+@media screen and (min-width: 679px) {
+  .home-events {
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
+  }
 }
 .home-events .event-card img {
   max-width: 100%;

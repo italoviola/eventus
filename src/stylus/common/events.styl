@@ -1,9 +1,14 @@
 .event-card
-    width 350px
+    width 100%
+    max-width 350px
     background-color $light-gray
     border-radius $radius
     border 1px solid $gray
     overflow hidden
+    margin 0 auto 30px
+
+    +tablet()
+        margin 0 15px 30px
 
     &-img
         width auto
