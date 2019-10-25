@@ -141,6 +141,56 @@
   margin-right: 20px;
   text-decoration: none;
 }
+.busca {
+  width: 90%;
+  margin: 0 auto;
+}
+.busca-presentation {
+  margin-bottom: 30px;
+}
+.busca-presentation h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #f39c12;
+  margin: 0;
+}
+.busca-presentation p {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  color: #000;
+  line-height: 1.6;
+}
+.busca-content {
+  width: 100%;
+}
+.busca-content-search {
+  margin-bottom: 30px;
+}
+.busca-content-search .search {
+  font-size: 18px;
+  font-weight: normal;
+  text-align: left;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+}
+.busca-content-results {
+  display: flex;
+  flex-flow: column;
+}
+@media screen and (min-width: 679px) {
+  .busca-content-results {
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
+  }
+}
+.busca-content-results .event-card img {
+  max-width: 100%;
+}
 .page-criar-conta {
   width: 100%;
   height: calc(100vh - 150px);
