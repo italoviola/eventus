@@ -1,4 +1,4 @@
-.busca
+.interesses
     width 90%
     margin 0 auto
 
@@ -9,24 +9,18 @@
     &-content
         width 100%
 
-        &-search
+        &-picks
             margin-bottom 30px
-            position relative
+            display flex
+            flex-flow row wrap
 
-            .icon-search
-                position absolute
-                left 0
-                top 50%
-                transform translate(100%, -50%)
-                font-size 18px
-                color #999
-
-            .search
-                font(18px, normal, left)
-                width 100%
-                padding 15px 15px 15px 45px
+            .pick
+                display inline-block
+                padding 15px
                 border 1px solid #CCC
                 border-radius $radius
+                margin 0 15px 15px 0
+                background-color $light-gray
 
         &-results
             display flex
