@@ -24,11 +24,11 @@
                 <h1>Criar conta</h1>
                 <form name="signup" id="signup">
                     <label for="email">*E-mail:</label>
-                    <input name="email" type="email" placeholder="E-mail para cadastro">
+                    <input name="email" type="email" placeholder="E-mail para cadastro" required>
                     <label for="name">*Nome:</label>
-                    <input name="name" type="text" placeholder="Seu nome">
+                    <input name="name" type="text" placeholder="Seu nome" required>
                     <label for="pass">*Senha:</label>
-                    <input name="password" type="password" placeholder="Sua senha">
+                    <input name="password" type="password" placeholder="Sua senha" required>
                     <input type="submit" value="Criar">
                 </form>
             </div>
@@ -45,76 +45,31 @@
         event.preventDefault();
     });
 
-    function postData(arr) {
-        console.log(arr)
-        //agora tem q pegar os respectivos campos pra passar no endppoint
+    function postData(arrFields) {
+        let email, nome, password, raw
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
+
+        arrFields.map((field) => {
+            if (field.name === 'email')
+                email = field.value
+
+            if (field.name === 'name')
+                name = field.value
+
+            if (field.name === 'password')
+                password = field.value
+        })
+        raw = `{\"email\":\"${email}\",\"name\":\"${name}\",\"password\":\"${password}\"}`;
+        
         $.ajax({ 
             type: "POST",
             url: endpoint,
-            data: "{\"email\":\"italo@teste.com\",\"name\":\"teste\",\"password\":\"senhasss\"}",
+            data: raw,
             success: () => {
                 console.log('success post');
             }
         }).done((response) => console.log(response));
     }
 
-    // function postData() {
-
-    //     //const $ = require("jquery");
-    //     const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
-
-    //     $.ajax({ 
-    //         type: "POST",
-    //         url: endpoint,
-    //         data: $('#signup').serializeArray(),
-    //         success: () => {
-    //             console('success post');
-    //         }
-    //     }).done((response) => console.log(response));
-
-    // }
-
-    // function func() {
-        
-        // var settings = {
-        //     "async": true,
-        //     "crossDomain": true,
-        //     "url": "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user",
-        //     "method": "POST",
-        //     "headers": {
-        //         "User-Agent": "PostmanRuntime/7.19.0",
-        //         "Accept": "*/*",
-        //         "Cache-Control": "no-cache",
-        //         "Postman-Token": "bd0e0e06-cb8f-4c0a-a5f0-fca14d08a912,0fcb46f0-a355-40e5-9bd1-de5df286acff",
-        //         "Host": "ilzwe35tl2.execute-api.sa-east-1.amazonaws.com",
-        //         "Accept-Encoding": "gzip, deflate",
-        //         "Content-Length": "83",
-        //         "Connection": "keep-alive",
-        //         "cache-control": "no-cache"
-        //     },
-        //     "data": "{\n    \"email\": \"teste@teste.com\",\n    \"name\": \"teste\",\n    \"password\": \"senhasss\"\n}"
-        // }
-
-        // $.ajax(settings).done(function (response) {
-        //     console.log(response);
-        // });
-
-            
-            // var form = new FormData($("form[name='nome_do_form']")[0]);
-
-            // var settings = {
-            //     "async": true,
-            //     "crossDomain": true,
-            //     "url": "http://api.example.com/service",
-            //     "method": "POST",
-            //     "processData": false,
-            //     "contentType": false,
-            //     "mimeType": "multipart/form-data",
-            //     "data": form
-            // }
-
-            // $.ajax(settings);
-    // }
     </script>
 </html>
