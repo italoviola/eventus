@@ -33,7 +33,7 @@
 					"raw": "{\n    \"email\": \"emailotavio@teste.com\",\n    \"name\": \"Email Otavio\",\n    \"password\": \"senha\"\n}"
 				},
 				"url": {
-					"raw": "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/signup",
+					"raw": "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user",
 					"protocol": "https",
 					"host": [
 						"ilzwe35tl2",
@@ -44,7 +44,7 @@
 					],
 					"path": [
 						"dev",
-						"signup"
+						"user"
 					]
 				}
 			},
@@ -68,7 +68,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"email@teste.com\",\n    \"password\": \"senha\"\n}"
+					"raw": "{\n    \"email\": \"emailotavio@teste.com\",\n    \"password\": \"senha\"\n}"
 				},
 				"url": {
 					"raw": "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/login",
@@ -187,6 +187,44 @@
 						{
 							"key": "perPage",
 							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Events By Keyword (category) and city",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events/category?category=curso&city=Santo Andre",
+					"protocol": "https",
+					"host": [
+						"dkxvfl7vv5",
+						"execute-api",
+						"sa-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"events-dev",
+						"events",
+						"category"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "curso"
+						},
+						{
+							"key": "city",
+							"value": "Santo Andre"
 						}
 					]
 				}
