@@ -37,7 +37,8 @@
             Aqui fica o footer
         </div> -->
     </body>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- dar um jeito de usar o jquery offline (lembrar da sugestao do menó do rio) -->
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
 
     $("form").submit(function(event) {
@@ -46,7 +47,7 @@
     });
 
     function postData(arrFields) {
-        let email, nome, password, raw
+        let email, name, password, raw
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
 
         arrFields.map((field) => {
@@ -66,7 +67,8 @@
             url: endpoint,
             data: raw,
             success: () => {
-                console.log('success post');
+                //console.log('success post');
+                alert('Conta criada com sucesso!')
             }
         }).done((response) => console.log(response));
     }

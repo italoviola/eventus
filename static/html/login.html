@@ -22,11 +22,11 @@
         <div class="page-login">
             <div class="form-wrapper">
                 <h1>Fazer login</h1>
-                <form>
-                    <label for="user">*Usuário:</label>
-                    <input name="user" type="text" placeholder="Seu nome de usuário ou e-mail">
-                    <label for="user">*Senha:</label>
-                    <input name="pass" type="text" placeholder="Sua senha">
+                <form name="login" id="login">
+                    <label for="email">*E-mail:</label>
+                    <input name="email" type="text" placeholder="Seu nome de usuário ou e-mail">
+                    <label for="password">*Senha:</label>
+                    <input name="password" type="password" placeholder="Sua senha">
                     <input type="submit" value="Entrar">
                 </form>
             </div>
@@ -35,4 +35,38 @@
             Aqui fica o footer
         </div> -->
     </body>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+
+    $("form").submit(function(event) {
+        postData($(this).serializeArray());
+        event.preventDefault();
+    });
+
+    function postData(arrFields) {
+        let email, password, raw
+        const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
+
+        arrFields.map((field) => {
+            if (field.email === 'email')
+                email = field.value
+
+            if (field.password === 'password')
+                password = field.value
+
+        })
+        raw = `{\"email\":\"${email}\",\"password\":\"${password}\"}`;
+        
+        $.ajax({ 
+            type: "POST",
+            url: endpoint,
+            data: raw,
+            success: () => {
+                //console.log('success post');
+                location.assign('http://localhost:3000/html/home.html')
+            }
+        }).done((response) => console.log(response));
+    }
+
+    </script>
 </html>
