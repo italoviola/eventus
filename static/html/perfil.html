@@ -67,7 +67,10 @@
         </div> -->
     </body>
     <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/main.js"></script>
     <script type="text/javascript">
+
+    // ALTERAR OQ FAZER QUANDO O FORM RECEBE ERRO + INCLUIR BOTAO DE LOGOFF
 
     $("form#interests").submit(function(event) {
         postData($(this).serializeArray());
@@ -75,25 +78,23 @@
     });
 
     function postData(arrFields) {
-        let email
+        const email = storageGetEmail()
         let interests = []
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
 
         arrFields.map((field) => {
             interests.push(`\"${field.value}\"`)
         })
-        raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]`;
-        console.log(raw)
+        raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]}`;
         
-        // $.ajax({ 
-        //     type: "POST",
-        //     url: endpoint,
-        //     data: raw,
-        //     success: () => {
-        //         //console.log('success post');
-        //         alert('Conta criada com sucesso!')
-        //     }
-        // }).done((response) => console.log(response));
+        $.ajax({ 
+            type: "POST",
+            url: endpoint,
+            data: raw,
+            success: () => {
+                alert('Seus interesses foram atualizados com sucesso!')
+            }
+        }).done((response) => console.log(response));
     }
 
     </script>

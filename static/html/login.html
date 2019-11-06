@@ -36,6 +36,7 @@
         </div> -->
     </body>
     <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/main.js"></script>
     <script type="text/javascript">
 
     $("form").submit(function(event) {
@@ -48,14 +49,15 @@
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
 
         arrFields.map((field) => {
-            if (field.email === 'email')
+            if (field.name === 'email')
                 email = field.value
 
-            if (field.password === 'password')
+            if (field.name === 'password')
                 password = field.value
-
         })
-        raw = `{\"email\":\"${email}\",\"password\":\"${password}\"}`;
+        raw = `{\"email\":\"${email}\",\"password\":\"${password}\"}`
+
+        storageSetEmail(email)
         
         $.ajax({ 
             type: "POST",
