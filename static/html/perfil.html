@@ -28,38 +28,38 @@
                 <p>Aqui você pode gerenciar seus interesses</p>
             </div>
             <div class="perfil-content">
-                <div class="interest-picks">
-                    <form>
+                <form id="interests" id="interests">
+                    <div class="interest-picks">
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Música</label>
+                            <input id="musica" name="musica" value="musica" type="checkbox">
+                            <label for="musica">Música</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Teatro</label>
+                            <input id="teatro" name="teatro" value="teatro" type="checkbox">
+                            <label for="teatro">Teatro</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Banana</label>
+                            <input id="banana" name="banana" value="banana" type="checkbox">
+                            <label for="banana">Banana</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Culinária</label>
+                            <input id="culinaria" name="culinaria" value="culinaria" type="checkbox">
+                            <label for="culinaria">Culinária</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Coisas coxinha</label>
+                            <input id="coxinha" name="coxinha" value="coxinha" type="checkbox">
+                            <label for="coxinha">Coisas coxinha</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Antifascismo</label>
+                            <input id="antifascismo" name="antifascismo" value="antifascismo" type="checkbox">
+                            <label for="antifascismo">Antifascismo</label>
                         </div>
-                    </form>
-                </div>
-                <div class="perfil-content-logout">
-                    <input class="change-interesse" type="button" value="Alterar interesses">
-                    <input class="logout" type="button" value="Sair do Eventus">
-                </div>
+                    </div>
+                    <div class="perfil-content-logout">
+                        <input class="change-interesse" type="submit" value="Alterar interesses">
+                        <!-- <input class="logout" type="submit" value="Sair do Eventus"> -->
+                    </div>
+                </form>
             </div>
         </div>
         <!-- <div class="institucional-footer">
@@ -69,36 +69,31 @@
     <script src="../jquery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
 
-    $("form").submit(function(event) {
+    $("form#interests").submit(function(event) {
         postData($(this).serializeArray());
         event.preventDefault();
     });
 
     function postData(arrFields) {
-        let email, name, password, raw
+        let email
+        let interests = []
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
 
         arrFields.map((field) => {
-            if (field.name === 'email')
-                email = field.value
-
-            if (field.name === 'name')
-                name = field.value
-
-            if (field.name === 'password')
-                password = field.value
+            interests.push(`\"${field.value}\"`)
         })
-        raw = `{\"email\":\"${email}\",\"name\":\"${name}\",\"password\":\"${password}\"}`;
+        raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]`;
+        console.log(raw)
         
-        $.ajax({ 
-            type: "POST",
-            url: endpoint,
-            data: raw,
-            success: () => {
-                //console.log('success post');
-                alert('Conta criada com sucesso!')
-            }
-        }).done((response) => console.log(response));
+        // $.ajax({ 
+        //     type: "POST",
+        //     url: endpoint,
+        //     data: raw,
+        //     success: () => {
+        //         //console.log('success post');
+        //         alert('Conta criada com sucesso!')
+        //     }
+        // }).done((response) => console.log(response));
     }
 
     </script>

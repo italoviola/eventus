@@ -96,12 +96,12 @@
   display: block;
   line-height: 1.8;
 }
-.interest-picks form {
+form .interest-picks {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
-.interest-picks form .pick {
+form .interest-picks .pick {
   display: inline-block;
   padding: 15px;
   border: 1px solid #ccc;
