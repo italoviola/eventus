@@ -1,7 +1,11 @@
 function storageSetEmail(email) {
-    localStorage.setItem('email', email)
+    localStorage.setItem('EventusEmail', email)
 }
 
 function storageGetEmail() {
-    return localStorage.getItem('email')
+    return localStorage.getItem('EventusEmail')
+}
+
+function storageRemoveEmail() {
+    localStorage.removeItem('EventusEmail')
 }

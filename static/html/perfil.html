@@ -55,10 +55,12 @@
                             <label for="antifascismo">Antifascismo</label>
                         </div>
                     </div>
-                    <div class="perfil-content-logout">
+                    <div class="perfil-content-button">
                         <input class="change-interesse" type="submit" value="Alterar interesses">
-                        <!-- <input class="logout" type="submit" value="Sair do Eventus"> -->
                     </div>
+                </form>
+                <form id="logout" id="logout">
+                    <input class="logout" type="submit" value="Sair do Eventus">
                 </form>
             </div>
         </div>
@@ -70,14 +72,17 @@
     <script src="../js/main.js"></script>
     <script type="text/javascript">
 
-    // ALTERAR OQ FAZER QUANDO O FORM RECEBE ERRO + INCLUIR BOTAO DE LOGOFF
-
     $("form#interests").submit(function(event) {
-        postData($(this).serializeArray());
+        postDataChangeInterests($(this).serializeArray());
         event.preventDefault();
     });
 
-    function postData(arrFields) {
+    $("form#logout").submit(function(event) {
+        postDataLogout();
+        event.preventDefault();
+    });
+
+    function postDataChangeInterests(arrFields) {
         const email = storageGetEmail()
         let interests = []
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
@@ -85,16 +90,29 @@
         arrFields.map((field) => {
             interests.push(`\"${field.value}\"`)
         })
-        raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]}`;
+        raw = `{\"email\":\"${storageGetEmail()}\",\"preferred_event_type\":[${interests}]}`;
         
-        $.ajax({ 
-            type: "POST",
+        $.ajax({
+            type: "POST", 
+            crossDomain: true,
             url: endpoint,
             data: raw,
-            success: () => {
-                alert('Seus interesses foram atualizados com sucesso!')
+            success: () => { 
+                console.log('success post');
             }
-        }).done((response) => console.log(response));
+        }).done((response) => {
+            if(response.statusCode == 200) { 
+                alert('Interesses atualizados com sucesso!');
+            } else {
+                alert('Erro ao atualizar interesses');
+                console.log(response);
+            }
+        });   
+    }
+
+    function postDataLogout() {
+        storageRemoveEmail()
+        location.assign('http://localhost:3000/html/index.html')
     }
 
     </script>

@@ -58,16 +58,23 @@
         raw = `{\"email\":\"${email}\",\"password\":\"${password}\"}`
 
         storageSetEmail(email)
-        
-        $.ajax({ 
-            type: "POST",
+
+        $.ajax({
+            type: "POST", 
+            crossDomain: true,
             url: endpoint,
             data: raw,
-            success: () => {
-                //console.log('success post');
-                location.assign('http://localhost:3000/html/home.html')
+            success: () => { 
+                console.log('success post');
             }
-        }).done((response) => console.log(response));
+        }).done((response) => {
+            if(response.statusCode == 200) { 
+                location.assign('http://localhost:3000/html/home.html')
+            } else {
+                alert('Erro ao fazer login');
+                console.log(response);
+            }
+        });
     }
 
     </script>

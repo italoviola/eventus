@@ -563,29 +563,10 @@ form .interest-picks .pick {
 .perfil-content .interest-picks {
   margin-bottom: 30px;
 }
-.perfil-content-logout {
+.perfil-content-button {
   text-align: center;
 }
-.perfil-content-logout .logout {
-  background-color: #fff;
-  border-radius: 25px;
-  color: #f39c12;
-  display: inline-block;
-  padding: 12px 18px;
-  text-decoration: none;
-  border: 1px solid #f39c12;
-  margin: 0 auto;
-  text-decoration: none;
-  text-align: center;
-  font-size: 18px;
-  display: block;
-}
-@media screen and (min-width: 679px) {
-  .perfil-content-logout .logout {
-    width: 250px;
-  }
-}
-.perfil-content-logout .change-interesse {
+.perfil-content-button .change-interesse {
   background-color: #f39c12;
   border-radius: 25px;
   color: #fff;
@@ -601,7 +582,26 @@ form .interest-picks .pick {
   margin-bottom: 15px;
 }
 @media screen and (min-width: 679px) {
-  .perfil-content-logout .change-interesse {
+  .perfil-content-button .change-interesse {
+    width: 250px;
+  }
+}
+.perfil-content .logout {
+  background-color: #fff;
+  border-radius: 25px;
+  color: #f39c12;
+  display: inline-block;
+  padding: 12px 18px;
+  text-decoration: none;
+  border: 1px solid #f39c12;
+  margin: 0 auto;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  display: block;
+}
+@media screen and (min-width: 679px) {
+  .perfil-content .logout {
     width: 250px;
   }
 }

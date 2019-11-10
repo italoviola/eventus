@@ -63,15 +63,22 @@
         })
         raw = `{\"email\":\"${email}\",\"name\":\"${name}\",\"password\":\"${password}\"}`;
         
-        $.ajax({ 
-            type: "POST",
+        $.ajax({
+            type: "POST", 
+            crossDomain: true,
             url: endpoint,
             data: raw,
-            success: () => {
-                //console.log('success post');
-                alert('Conta criada com sucesso!')
+            success: () => { 
+                console.log('success post');
             }
-        }).done((response) => console.log(response));
+        }).done((response) => {
+            if(response.statusCode == 200) { 
+                alert('Conta criada com sucesso!');
+            } else {
+                alert('Erro ao fazer criar conta!');
+                console.log(response);
+            }
+        });
     }
 
     </script>
