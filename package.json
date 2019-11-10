@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mustache": "^3.1.0",
     "stylus": "^0.54.7"
   },
   "devDependencies": {
