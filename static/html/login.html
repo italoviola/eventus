@@ -46,7 +46,7 @@
 
     function postData(arrFields) {
         let email, password, raw
-        const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
+        const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/login";
 
         arrFields.map((field) => {
             if (field.name === 'email')
@@ -68,7 +68,7 @@
                 console.log('success post');
             }
         }).done((response) => {
-            if(response.statusCode == 200) { 
+            if(!response.statusCode) { 
                 location.assign('http://localhost:3000/html/home.html')
             } else {
                 alert('Erro ao fazer login');
