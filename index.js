@@ -1,9 +1,8 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const site = express();
 
-app.use(express.static('static/'));
-// app.set('engine', 'mustache');
+site.use(express.static('static/'));
 
-app.listen(3000, function() {
+site.listen(3000, function() {
     console.log('Listening port 3000');
 });

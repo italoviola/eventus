@@ -1,3 +1,5 @@
+// Storage functions
+
 function storageSetEmail(email) {
     localStorage.setItem('EventusEmail', email)
 }
