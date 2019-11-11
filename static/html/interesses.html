@@ -79,7 +79,7 @@
 
     function postDataChangeInterests(arrFields) {
         $('.interesses-content-results').html('Carregando...');
-        
+
         const city = 'Santo Andre'
         let category = arrFields[0].value
         const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events/category?category=${category}&city=${city}`;
@@ -95,8 +95,8 @@
             if(!response.statusCode) { 
                 setEventCards(response);
             } else {
-                alert('Não foi possível retornar eventos de seu interesse');
-                $('.interesses-content-results').html('');
+                // alert('Não foi possível retornar eventos de seu interesse');
+                $('.interesses-content-results').html('Não foi possível retornar eventos para essa categoria :(');
                 console.log(response);
             }
         });

@@ -62,7 +62,7 @@
             if(!response.errorType) { 
                 setEventCards(response);
             } else {
-                alert('Não foi possível retornar eventos de seu interesse');
+                $('.home-events').html('Não foi possível retornar eventos de seu interesse');
                 console.log(response);
             }
         });   

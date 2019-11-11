@@ -28,22 +28,14 @@
                 <p>Eventos ao seu alcance, busque por eventos de seu interesse</p>
             </div>
             <div class="busca-content">
-                <form class="busca-content-search">
+                <form id="busca" name="busca" class="busca-content-search">
                     <span class="icon-search"></span>
-                    <input class="search" type="text" placeholder="Busque por um evento...">
+                    <input class="search" name="busca" type="text" placeholder="Busque por um evento...">
+                    <input type="submit" style="position: absolute; left: -9999px"/>
+                    <!-- <input type="submit"/> -->
                 </form>
                 <div class="busca-content-results">
-                    <div class="event-card">
-                        <div class="event-card-img">
-                            <img src="https://images.sympla.com.br/5d925008a8282-lg.png">
-                        </div>
-                        <div class="event-card-desc">
-                            <span class="date-time">15 de outubro de 2019, 19h-23h</span>
-                            <h3 class="title">VINHOTERAPIA EMPRESARIAL</h3>
-                            <span>Vero Verde Pizzaria</span>
-                            <span><a href="#" target="_blank">Rua das Bandeiras, 16, Jardim</a></span>
-                        </div>
-                    </div>
+                    <!-- Event Cards -->
                 </div>
             </div>
         </div>
@@ -51,4 +43,61 @@
             Aqui fica o footer
         </div> -->
     </body>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript">
+
+    $("form").submit(function(event) {
+        postData($(this).serializeArray());
+        event.preventDefault();
+    });
+
+    function postData(arrFields) {
+        $('.busca-content-results').html('Carregando...');
+
+        let category = arrFields[0].value
+        const city = 'Santo Andre'
+        const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events/category?category=${category}&city=${city}`;
+
+        console.log(endpoint)
+        
+        $.ajax({
+            type: "GET", 
+            crossDomain: true,
+            url: endpoint,
+            success: () => { 
+                console.log('success get');
+            }
+        }).done((response) => {
+            if(!response.statusCode) { 
+                setEventCards(response);
+            } else {
+                // alert('Sem resultados para essa busca de eventos');
+                $('.busca-content-results').html('Não encontramos nenhum evento para sua busca :(');
+                console.log(response);
+            }
+        });   
+    }
+
+    function setEventCards(events) {
+        $('.busca-content-results').html('');
+
+        console.log(events)
+        let cover, calendar, eventName, location, address
+        let cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+        let cards
+
+        events.forEach((event) => {
+            cover = event.cover
+            calendar = event.calendar
+            eventName = event.eventName
+            location = event.location
+            address = event.address
+            cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+            
+            $('.busca-content-results').append(cardTemplate);
+        });
+    }
+
+    </script>
 </html>

@@ -93,7 +93,7 @@
         raw = `{\"email\":\"${storageGetEmail()}\",\"preferred_event_type\":[${interests}]}`;
         
         $.ajax({
-            type: "POST", 
+            type: "PATCH", 
             crossDomain: true,
             url: endpoint,
             data: raw,
@@ -101,7 +101,7 @@
                 console.log('success post');
             }
         }).done((response) => {
-            if(response.statusCode == 200) { 
+            if(response.statusCode == 200 || response.statusCode == 201) { 
                 alert('Interesses atualizados com sucesso!');
             } else {
                 alert('Erro ao atualizar interesses');
