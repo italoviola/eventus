@@ -28,46 +28,39 @@
                 <p>Todos os eventos próximos à você, separados por categoria</p>
             </div>
             <div class="interesses-content">
-                <div class="interest-picks">
-                    <form>
+                <form id="category" id="category">
+                    <div class="interest-picks">
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Música</label>
-                        </div>
-                        <div class="pick">
-                            <input type="checkbox">
-                            <label>Teatro</label>
+                            <input id="rock" name="category" value="rock" type="radio">
+                            <label for="rock">Rock</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Banana</label>
+                            <input id="teatro" name="category" value="teatro" type="radio">
+                            <label for="teatro">Teatro</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Culinária</label>
+                            <input id="banana" name="category" value="banana" type="radio">
+                            <label for="banana">Banana</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Coisas coxinha</label>
+                            <input id="culinaria" name="category" value="culinaria" type="radio">
+                            <label for="culinaria">Culinária</label>
                         </div>
                         <div class="pick">
-                            <input type="checkbox">
-                            <label>Antifascismo</label>
+                            <input id="coxinha" name="category" value="coxinha" type="radio">
+                            <label for="coxinha">Coisas coxinha</label>
                         </div>
-                    </form>
-                </div>
-                <div class="interesses-content-results">
-                    <div class="event-card">
-                        <div class="event-card-img">
-                            <img src="https://images.sympla.com.br/5d925008a8282-lg.png">
-                        </div>
-                        <div class="event-card-desc">
-                            <span class="date-time">15 de outubro de 2019, 19h-23h</span>
-                            <h3 class="title">VINHOTERAPIA EMPRESARIAL</h3>
-                            <span>Vero Verde Pizzaria</span>
-                            <span><a href="#" target="_blank">Rua das Bandeiras, 16, Jardim</a></span>
+                        <div class="pick">
+                            <input id="antifascismo" name="category" value="antifascismo" type="radio">
+                            <label for="antifascismo">Antifascismo</label>
                         </div>
                     </div>
+                    <div class="interest-content-button">
+                        <input class="buscar-interesse" type="submit" value="Buscar por categoria">
+                    </div>
+                </form>
+                <div class="interesses-content-results">
+                    <!-- Event Cards -->
                 </div>
             </div>
         </div>
@@ -75,4 +68,59 @@
             Aqui fica o footer
         </div> -->
     </body>
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript">    
+
+    $("form").submit(function(event) {
+        postDataChangeInterests($(this).serializeArray());
+        event.preventDefault();
+    });
+
+    function postDataChangeInterests(arrFields) {
+        $('.interesses-content-results').html('Carregando...');
+        
+        const city = 'Santo Andre'
+        let category = arrFields[0].value
+        const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events/category?category=${category}&city=${city}`;
+        
+        $.ajax({
+            type: "GET", 
+            crossDomain: true,
+            url: endpoint,
+            success: () => { 
+                console.log('success get');
+            }
+        }).done((response) => {
+            if(!response.statusCode) { 
+                setEventCards(response);
+            } else {
+                alert('Não foi possível retornar eventos de seu interesse');
+                $('.interesses-content-results').html('');
+                console.log(response);
+            }
+        });
+    }
+
+    function setEventCards(events) {
+        $('.interesses-content-results').html('');
+
+        console.log(events)
+        let cover, calendar, eventName, location, address
+        let cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+        let cards
+
+        events.forEach((event) => {
+            cover = event.cover
+            calendar = event.calendar
+            eventName = event.eventName
+            location = event.location
+            address = event.address
+            cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+            
+            $('.interesses-content-results').append(cardTemplate);
+        });
+    }
+
+    </script>
 </html>
