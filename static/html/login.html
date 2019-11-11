@@ -68,7 +68,10 @@
                 console.log('success post');
             }
         }).done((response) => {
-            if(!response.statusCode) { 
+            if(!response.statusCode) {
+                let name = response.name
+                storageSetName(name)
+
                 location.assign('http://localhost:3000/html/home.html')
             } else {
                 alert('Erro ao fazer login');

@@ -24,7 +24,7 @@
         </div>
         <div class="perfil">
             <div class="perfil-presentation">
-                <h1>Perfil de Fulano</h1>            
+                <h1>Perfil de <span class="user"></span></h1>            
                 <p>Aqui você pode gerenciar seus interesses</p>
             </div>
             <div class="perfil-content">
@@ -72,6 +72,8 @@
     <script src="../js/main.js"></script>
     <script type="text/javascript">
 
+    $('.user').html(storageGetName());
+
     $("form#interests").submit(function(event) {
         postDataChangeInterests($(this).serializeArray());
         event.preventDefault();
@@ -90,7 +92,7 @@
         arrFields.map((field) => {
             interests.push(`\"${field.value}\"`)
         })
-        raw = `{\"email\":\"${storageGetEmail()}\",\"preferred_event_type\":[${interests}]}`;
+        raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]}`;
         
         $.ajax({
             type: "PATCH", 
@@ -112,6 +114,7 @@
 
     function postDataLogout() {
         storageRemoveEmail()
+        storageRemoveName()
         location.assign('http://localhost:3000/html/index.html')
     }
 
