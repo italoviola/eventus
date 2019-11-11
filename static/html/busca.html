@@ -85,7 +85,6 @@
         console.log(events)
         let cover, calendar, eventName, location, address
         let cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
-        let cards
 
         events.forEach((event) => {
             cover = event.cover
