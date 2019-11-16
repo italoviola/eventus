@@ -70,7 +70,12 @@
         }).done((response) => {
             if(!response.statusCode) {
                 let name = response.name
+                let city = response.city
+                let interests = response.preferred_event_type
+
                 storageSetName(name)
+                storageSetCity(city)
+                storageSetInterests(interests)
 
                 location.assign('http://localhost:3000/html/home.html')
             } else {

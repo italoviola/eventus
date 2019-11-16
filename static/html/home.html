@@ -44,45 +44,85 @@
 
     $('.home-events').html('Carregando...');
 
-    $(document).ready(postDataChangeInterests())
+    $(document).ready(getEventByUserInterests())
 
+<<<<<<< HEAD
     function postDataChangeInterests() {
         const city = 'Santo Andre'
         const perPage = 44
+=======
+    function getEventByCity() {
+        const city = storageGetCity()
+        const perPage = 52
+>>>>>>> caa182c... Improve events search
         const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events?city=${city}&perPage=${perPage}`;
-        
-        $.ajax({
-            type: "GET", 
-            crossDomain: true,
-            url: endpoint,
-            success: () => { 
-                console.log('success get');
-            }
-        }).done((response) => {
-            if(!response.errorType) { 
-                setEventCards(response);
-            } else {
-                $('.home-events').html('Não foi possível retornar eventos de seu interesse');
-                console.log(response);
-            }
-        });   
+
+            $.ajax({
+                type: "GET", 
+                crossDomain: true,
+                url: endpoint,
+                success: () => { 
+                    console.log('success get');
+                }
+            }).done((response) => {
+                if(!response.errorType) { 
+                    setEventCards(response);
+                } else {
+                    $('.home-events').html('Não foi possível retornar eventos de seu interesse');
+                    console.log(response);
+                }
+            });
     }
 
-    function setEventCards(events) {
+    function getEventByUserInterests() {
+        const city = storageGetCity()
+        const interests = storageGetInterests()
+        
+        if(interests != undefined) {
+            const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events/recomendation?city=${city}&interest1=${interests[0]}&interest2=${interests[1]}&interest3=${interests[2]}`;
+
+            $.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: endpoint,
+                success: () => { 
+                    console.log('success get');
+                }
+            }).done((response) => {
+                if(response.statusCode == 404) {
+                    getEventByCity();
+                } else if(!response.errorType) { 
+                    setEventCards(response);
+                } else {
+                    getEventByCity();                    
+                }
+            });
+        } else {
+            getEventByCity()
+        }                
+         
+    }
+
+    function setEventCards(allEvents) {
         $('.home-events').html('');
 
-        console.log(events)
-        let cover, calendar, eventName, location, address
-        let cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+        console.log(allEvents)
+        let cover, calendar, eventName, location, address, googleMapLink, eventLink
+        let cardTemplate = `<div class="event-card"><div class="event-card-img"><a href="${eventLink}" target="_blank"><img src="${cover}"></a></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="${googleMapLink}" target="_blank">${address}</a></span></div></div>`
         let cards
 
+        var noUndefinedEvents = allEvents.filter(value => Object.keys(value).length !== 0);
+        var events = noUndefinedEvents.filter(value => value.eventName != "None");
+
         events.forEach((event) => {
-            cover = event.cover
+            cover = event.cover != undefined ? event.cover : "/assets/logo_eventus.png"
             calendar = event.calendar
             eventName = event.eventName
+            eventLink = event.link
             location = event.location
             address = event.address
-            cardTemplate = `<div class="event-card"><div class="event-card-img"><img src="${cover}"></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="#" target="_blank">${address}</a></span></div></div>`
+            googleMapLink = event.locationMapLink
+            cardTemplate = `<div class="event-card"><div class="event-card-img"><a href="${eventLink}" target="_blank"><img src="${cover}"></a></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="${googleMapLink}" target="_blank">${address}</a></span></div></div>`
             
             $('.home-events').append(cardTemplate);
         });
