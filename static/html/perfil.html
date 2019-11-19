@@ -107,25 +107,29 @@
             interestsLocal.push(field.value)
         })
         raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]}`;
-        
-        $.ajax({
-            type: "PATCH", 
-            crossDomain: true,
-            url: endpoint,
-            data: raw,
-            success: () => { 
-                console.log('success post');
-            }
-        }).done((response) => {
-            if(response.statusCode == 200 || response.statusCode == 201) { 
-                alert('Interesses atualizados com sucesso!');
-            } else {
-                alert('Erro ao atualizar interesses');
-                console.log(response);
-            }
-        });
+        console.log('interests len', interests.length)
 
-        storageSetInterests(interestsLocal)
+        if (interests.length === 0) {
+            alert('Selecione ao menos um interesse');
+        } else {
+            $.ajax({
+                type: "PATCH", 
+                crossDomain: true,
+                url: endpoint,
+                data: raw,
+                success: () => { 
+                    console.log('success post');
+                }
+            }).done((response) => {
+                if(response.statusCode == 200 || response.statusCode == 201) { 
+                    alert('Interesses atualizados com sucesso!');
+                } else {
+                    alert('Erro ao atualizar interesses');
+                    console.log(response);
+                }
+            });
+            storageSetInterests(interestsLocal)
+        }
     }
 
     function postDataLogout() {
