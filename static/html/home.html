@@ -100,7 +100,7 @@
     function setEventCards(allEvents) {
         $('.home-events').html('');
 
-        console.log(allEvents)
+        // console.log(allEvents)
         let cover, calendar, eventName, location, address, googleMapLink, eventLink
         let cardTemplate = `<div class="event-card"><div class="event-card-img"><a href="${eventLink}" target="_blank"><img src="${cover}"></a></div><div class="event-card-desc"><span class="date-time">${calendar}</span><h3 class="title">${eventName}</h3><span>${location}</span><span><a href="${googleMapLink}" target="_blank">${address}</a></span></div></div>`
         let cards

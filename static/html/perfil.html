@@ -99,10 +99,12 @@
     function postDataChangeInterests(arrFields) {
         const email = storageGetEmail()
         let interests = []
+        let interestsLocal = []
         const endpoint = "https://ilzwe35tl2.execute-api.sa-east-1.amazonaws.com/dev/user";
 
         arrFields.map((field) => {
             interests.push(`\"${field.value}\"`)
+            interestsLocal.push(field.value)
         })
         raw = `{\"email\":\"${email}\",\"preferred_event_type\":[${interests}]}`;
         
@@ -121,12 +123,16 @@
                 alert('Erro ao atualizar interesses');
                 console.log(response);
             }
-        });   
+        });
+
+        storageSetInterests(interestsLocal)
     }
 
     function postDataLogout() {
         storageRemoveEmail()
         storageRemoveName()
+        storageRemoveCity()
+        storageRemoveInterests()
         location.assign('http://localhost:3000/html/index.html')
     }
 
