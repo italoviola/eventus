@@ -46,15 +46,9 @@
 
     $(document).ready(getEventByUserInterests())
 
-<<<<<<< HEAD
-    function postDataChangeInterests() {
-        const city = 'Santo Andre'
-        const perPage = 44
-=======
     function getEventByCity() {
         const city = storageGetCity()
         const perPage = 52
->>>>>>> caa182c... Improve events search
         const endpoint = `https://dkxvfl7vv5.execute-api.sa-east-1.amazonaws.com/events-dev/events?city=${city}&perPage=${perPage}`;
 
             $.ajax({
